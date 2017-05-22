@@ -1,6 +1,8 @@
 
 function printLink(data) {
-  debugger
+  $('#link-list .row').prepend(data)
+  $('#url').val('')
+  $('#title').val('')
 }
 
 function addLink() {

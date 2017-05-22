@@ -11,13 +11,11 @@ class LinksController < ApplicationController
 
   def create
     user = current_user
-    debugger
     @link = user.links.new(link_params)
     if @link.save
-      
+      render partial: 'shared/new_link', layout: false
     else
       flash[:error] = @link.errors.full_messages.to_sentence
-      render :index
     end
   end
 
