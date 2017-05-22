@@ -12,7 +12,9 @@
       </div>
       <div class="card-action">
         <a href="#">Mark as read</a>
-        <a href="#">Edit</a>
+        <form action="/links/<%= @link.id %>/edit" method="get">
+          <input type="submit" value="Edit" class="edit-link"/>
+        </form>
       </div>
     </div>
   </div>
