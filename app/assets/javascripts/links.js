@@ -92,7 +92,18 @@ function filterLinks() {
   })
 }
 
-
+function bindShowRead() {
+  $('#show-read').on('click', function(event) {
+    $('.link-card').each( function(index, link) {
+      let readVal = $(link).find('.read-status').text()
+      if(readVal.includes("true")) {
+        $(link).show()
+      } else {
+        $(link).hide()
+      }
+    })
+  })
+}
 
 $(document).ready(function(){
   bindLinkSubmit()
@@ -100,4 +111,6 @@ $(document).ready(function(){
   loadAllLinks()
 
   filterLinks()
+
+  bindShowRead()
 });
