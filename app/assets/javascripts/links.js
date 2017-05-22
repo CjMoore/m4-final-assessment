@@ -45,6 +45,7 @@ function printAllLinks(data) {
           <span class="card-title">${link.title}</span>
             <p>
               <a href ="${link.url}">${link.url}</a>
+              <p>Read: ${link.read}</p>
             </p>
         </div>
         <div class="card-action">

@@ -12,6 +12,7 @@ describe "when logged in user visits root", js: true do
 
     within('#link-list') do
       expect(page).to have_content("Google")
+      expect(page).to have_content('Read: false')
       expect(page).to have_content("Reddit")
       expect(page).to have_link('http://google.com')
       expect(page).to have_link('http://reddit.com')

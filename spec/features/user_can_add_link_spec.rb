@@ -20,6 +20,7 @@ describe "when user is on root/links index they see a form to submit new link", 
     within('#link-list') do
       expect(page).to have_content('https://www.google.com/')
       expect(page).to have_content('Google')
+      expect(page).to have_content('Read: false')
 
       expect(page).to have_link('Mark as read')
       expect(page).to have_link('Edit')
