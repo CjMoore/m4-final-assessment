@@ -16,6 +16,7 @@ describe "when a guest user visits root they are redirected to sign up or login"
 
     click_on('Create Account')
 
+    save_and_open_page
     expect(current_path).to eq(root_path)
     expect(page).to have_content('email@email.com has successfully logged in')
   end
