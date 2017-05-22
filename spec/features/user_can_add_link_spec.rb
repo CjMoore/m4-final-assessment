@@ -39,5 +39,9 @@ describe "when user is on root/links index they see a form to submit new link", 
 
       click_on('Add link')
     end
+
+    within('.error') do
+      expect(page).to have_content("Url is not a valid URL")
+    end
   end
 end
