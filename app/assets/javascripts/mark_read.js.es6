@@ -1,12 +1,12 @@
 $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
+  
 })
 
 function markAsRead(e) {
   e.preventDefault();
 
-  var $link = $(this).parents('.link');
-  var linkId = $link.data('link-id');
+  const linkId = $(this).data('id')
 
   $.ajax({
     type: "PATCH",
@@ -17,7 +17,18 @@ function markAsRead(e) {
 }
 
 function updateLinkStatus(link) {
-  $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
+  $(`#${link.id} .read-status`).text("Read: true")
+  $(`#${link.id}`).addClass('green lighten-1')
+  $(`#${link.id} .card-action`).empty().remove()
+
+  let changeToRead = `<div class="card-action">
+    <button class="mark-as-unread" data-id="${link.id}">Mark as unread</button>
+    <form action="/links/${link.id}/edit" method="get">
+      <input type="submit" value="Edit" class="edit-link"/>
+    </form>
+  </div>`
+
+  $(`#${link.id}`).append(changeToRead)
 }
 
 function displayFailure(failureData){
