@@ -25,4 +25,19 @@ describe "when user is on root/links index they see a form to submit new link", 
       expect(page).to have_link('Edit')
     end
   end
+
+  it "cannot add a link with invalid inputs" do
+    user = User.create(email: 'email@email.com', password: 'pass')
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+
+    within('#link-form') do
+      fill_in "Url", with: 'www.google.com/'
+      fill_in "Title", with: 'Google'
+
+      click_on('Add link')
+    end
+  end
 end

@@ -15,7 +15,9 @@ class LinksController < ApplicationController
     if @link.save
       render partial: 'shared/new_link', layout: false
     else
+      # byebug
       flash[:error] = @link.errors.full_messages.to_sentence
+      render partial: 'shared/flash_error', layout: false
     end
   end
 

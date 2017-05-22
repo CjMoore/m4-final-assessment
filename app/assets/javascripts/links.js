@@ -1,8 +1,13 @@
 
 function printLink(data) {
-  $('#link-list .row').prepend(data)
-  $('#url').val('')
-  $('#title').val('')
+  if (data.includes('.error') ){
+
+  } else {
+    $('#link-list .row').prepend(data)
+    $('#url').val('')
+    $('#title').val('')
+    $('.error').empty()
+  }
 }
 
 function addLink() {
