@@ -12,7 +12,7 @@ describe "when a guest user visits root they are redirected to sign up or login"
 
     fill_in "Email", with: 'email@email.com'
     fill_in "Password", with: 'pass'
-    fill_in 'Password conformation', with: 'pass'
+    fill_in 'Password confirmation', with: 'pass'
 
     click_on('Create Account')
 
