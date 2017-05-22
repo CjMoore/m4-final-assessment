@@ -30,7 +30,6 @@ function markAsUnread(e) {
 }
 
 function updateLinkStatus(link) {
-  debugger
   if (link.read == true) {
     $(`#${link.id} .read-status`).text("Read: true")
     $(`#${link.id}`).addClass('green lighten-1')
