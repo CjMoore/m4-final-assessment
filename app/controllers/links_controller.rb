@@ -15,9 +15,23 @@ class LinksController < ApplicationController
     if @link.save
       render partial: 'shared/new_link', layout: false
     else
-      # byebug
       flash[:error] = @link.errors.full_messages.to_sentence
       render partial: 'shared/flash_error', layout: false
+    end
+  end
+
+  def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+    @link = current_user.links.find(params[:id])
+    if @link.update(link_params)
+      flash[:notice] = "Link has been updated"
+      redirect_to root_path
+    else
+      flash[:error] = @link.errors.full_messages.to_sentence
+      render :edit
     end
   end
 

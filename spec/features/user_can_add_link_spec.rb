@@ -23,7 +23,7 @@ describe "when user is on root/links index they see a form to submit new link", 
       expect(page).to have_content('Read: false')
 
       expect(page).to have_link('Mark as read')
-      expect(page).to have_link('Edit')
+      expect(page).to have_button('Edit')
     end
   end
 
