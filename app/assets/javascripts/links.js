@@ -40,23 +40,51 @@ function loadAllLinks() {
 function printAllLinks(data) {
   data.forEach( (link) => {
     let linkHtml = `<div class="col s4">
-      <div class="card link-card" >
+      <div class="card link-card" id="${link.id}" >
         <div class="card-content">
           <span class="card-title">${link.title}</span>
             <p>
               <a href ="${link.url}">${link.url}</a>
-              <p>Read: ${link.read}</p>
+              <p class='read-status'>Read: ${link.read}</p>
             </p>
-        </div>
-        <div class="card-action">
-          <a href="#">Mark as read</a>
-          <form action="/links/${link.id}/edit" method="get">
-            <input type="submit" value="Edit" class="edit-link"/>
-          </form>
         </div>
       </div>
     </div>`
+
+    // <div class="card-action">
+    //   <button class="mark-as-read" data-id="${link.id}">Mark as unread</button>
+    //   <form action="/links/${link.id}/edit" method="get">
+    //     <input type="submit" value="Edit" class="edit-link"/>
+    //   </form>
+
     $('#link-list .row').prepend(linkHtml)
+
+    if (link.read == true) {
+      let readOrNot = `<div class="card-action">
+        <button class="mark-as-unread" data-id="${link.id}">Mark as unread</button>
+        <form action="/links/${link.id}/edit" method="get">
+          <input type="submit" value="Edit" class="edit-link"/>
+        </form>
+      </div>`
+      $(`#${link.id}`).append(readOrNot)
+      $(`#${link.id}`).addClass('green lighten-1')
+
+      // debugger
+    } else {
+      let readOrNot = `<div class="card-action">
+        <button class="mark-as-read" data-id="${link.id}">Mark as read</button>
+        <form action="/links/${link.id}/edit" method="get">
+          <input type="submit" value="Edit" class="edit-link"/>
+        </form>
+      </div>`
+      $(`#${link.id}`).append(readOrNot)
+    }
+  })
+}
+
+function bindChangeRead() {
+  $('.card-action').on('click', '.change-read', function(event){
+    debugger
   })
 }
 
@@ -65,5 +93,7 @@ $(document).ready(function(){
   bindLinkSubmit()
 
   loadAllLinks()
+
+  bindChangeRead()
 
 });

@@ -1,4 +1,5 @@
 class Api::V1::LinksController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def update
     @link = Link.find(params[:id])
