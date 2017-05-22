@@ -11,7 +11,7 @@ function markAsRead(e) {
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
-    data: { read: false },
+    data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
 }
@@ -24,13 +24,14 @@ function markAsUnread(e) {
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
-    data: { read: true },
+    data: { read: false },
   }).then(updateLinkStatus)
     .fail(displayFailure);
 }
 
 function updateLinkStatus(link) {
-  if (link.read == false) {
+  debugger
+  if (link.read == true) {
     $(`#${link.id} .read-status`).text("Read: true")
     $(`#${link.id}`).addClass('green lighten-1')
     $(`#${link.id} .card-action`).empty().remove()
