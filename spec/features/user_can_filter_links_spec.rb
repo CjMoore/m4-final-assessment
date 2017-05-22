@@ -44,4 +44,26 @@ describe "user can filter links", js: true do
       expect(page).to_not have_content("Reddit")
     end
   end
+
+  it "by clickin show unread button" do
+    user = User.create(email: 'email@email.com', password: 'pass')
+    link1 = user.links.create(title: 'Google', url: 'http://google.com', read: true)
+    link2 = user.links.create(title: 'Reddit', url: 'http://reddit.com')
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit root_path
+
+    within('#link-list') do
+      expect(page).to have_content("Google")
+      expect(page).to have_content("Reddit")
+    end
+
+    click_on("Show Unread")
+
+    within('#link-list') do
+      expect(page).to have_content("Reddit")
+      expect(page).to_not have_content("Google")
+    end
+  end
 end

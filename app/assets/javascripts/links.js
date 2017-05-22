@@ -92,11 +92,24 @@ function filterLinks() {
   })
 }
 
-function bindShowRead() {
+function showRead() {
   $('#show-read').on('click', function(event) {
     $('.link-card').each( function(index, link) {
       let readVal = $(link).find('.read-status').text()
       if(readVal.includes("true")) {
+        $(link).show()
+      } else {
+        $(link).hide()
+      }
+    })
+  })
+}
+
+function showUnread() {
+  $('#show-unread').on('click', function(event) {
+    $('.link-card').each( function(index, link) {
+      let readVal = $(link).find('.read-status').text()
+      if(readVal.includes("false")) {
         $(link).show()
       } else {
         $(link).hide()
@@ -112,5 +125,7 @@ $(document).ready(function(){
 
   filterLinks()
 
-  bindShowRead()
+  showRead()
+
+  showUnread()
 });
