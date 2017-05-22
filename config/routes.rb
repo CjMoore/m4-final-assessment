@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: "links#index"
 
   resources :links, only: [:index]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    
+  end
 
   get '/signup', to: 'users#signup', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'

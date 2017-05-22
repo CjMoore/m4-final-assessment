@@ -4,6 +4,7 @@ class LinksController < ApplicationController
     if current_user.nil?
       redirect_to signup_path
     else
+      @link = Link.new
     end
   end
 end
