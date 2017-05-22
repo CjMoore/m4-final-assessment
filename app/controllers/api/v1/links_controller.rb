@@ -9,6 +9,11 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def index
+    @links = current_user.links
+    render json: @links
+  end
+
   private
 
   def link_params
