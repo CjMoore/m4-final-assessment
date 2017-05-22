@@ -36,13 +36,14 @@ function updateLinkStatus(link) {
     $(`#${link.id} .card-action`).empty().remove()
 
     let changeToRead = `<div class="card-action">
-    <button class="mark-as-unread" data-id="${link.id}">Mark as unread</button>
+    <button class="mark-as-unread btn cyan lighten-4" data-id="${link.id}">Mark as unread</button>
     <form action="/links/${link.id}/edit" method="get">
-    <input type="submit" value="Edit" class="edit-link"/>
+    <input type="submit" value="Edit" class="edit-link deep-orange lighten-3 btn"/>
     </form>
     </div>`
 
     $(`#${link.id}`).append(changeToRead)
+
   } else {
 
     $(`#${link.id} .read-status`).text("Read: false")
@@ -50,9 +51,9 @@ function updateLinkStatus(link) {
     $(`#${link.id} .card-action`).empty().remove()
 
     let changeToUnread = `<div class="card-action">
-    <button class="mark-as-read" data-id="${link.id}">Mark as read</button>
+    <button class="mark-as-read btn purple lighten-3" data-id="${link.id}">Mark as read</button>
     <form action="/links/${link.id}/edit" method="get">
-    <input type="submit" value="Edit" class="edit-link"/>
+    <input type="submit" value="Edit" class="edit-link deep-orange lighten-3 btn"/>
     </form>
     </div>`
 
