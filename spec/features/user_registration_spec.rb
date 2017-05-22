@@ -16,8 +16,21 @@ describe "when a guest user visits root they are redirected to sign up or login"
 
     click_on('Create Account')
 
-    save_and_open_page
     expect(current_path).to eq(root_path)
     expect(page).to have_content('email@email.com has successfully logged in')
+  end
+
+  it "they are unable to create an account with an email that already exists" do
+    user = User.create(email: 'email@email.com', password: 'pass')
+
+    visit new_user_path
+
+    fill_in "Email", with: 'email@email.com'
+    fill_in "Password", with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+
+    click_on('Create Account')
+
+    expect(page).to have_content("Email has already been taken")
   end
 end
