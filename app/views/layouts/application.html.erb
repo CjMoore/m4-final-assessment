@@ -5,9 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
+  <% flash.each do |type, msg| %>
+  <%= content_tag :div, sanitize(msg), class: type %>
+  <% end %>
   <%= yield %>
 </div>
 
