@@ -40,7 +40,7 @@ function loadAllLinks() {
 function printAllLinks(data) {
   data.forEach( (link) => {
     let linkHtml = `<div class="col s4">
-      <div class="card">
+      <div class="card link-card" >
         <div class="card-content">
           <span class="card-title">${link.title}</span>
             <p>
@@ -50,7 +50,9 @@ function printAllLinks(data) {
         </div>
         <div class="card-action">
           <a href="#">Mark as read</a>
-          <a href="#">Edit</a>
+          <form action="/links/${link.id}/edit" method="get">
+            <input type="submit" value="Edit" class="edit-link"/>
+          </form>
         </div>
       </div>
     </div>`
@@ -58,8 +60,10 @@ function printAllLinks(data) {
   })
 }
 
+
 $(document).ready(function(){
   bindLinkSubmit()
 
   loadAllLinks()
+
 });
