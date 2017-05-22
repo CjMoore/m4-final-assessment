@@ -10,6 +10,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" rel="stylesheet"/>
 </head>
 <body>
+  <%= render partial: 'shared/nav' %>
 <div class="container">
   <% flash.each do |type, msg| %>
   <%= content_tag :div, sanitize(msg), class: type %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#signup', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   namespace :api do
     namespace :v1 do
