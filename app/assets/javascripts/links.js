@@ -33,7 +33,23 @@ function loadAllLinks() {
 }
 
 function printAllLinks(data) {
-  
+  data.forEach( (link) => {
+    let linkHtml = `<div class="col s4">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">${link.title}</span>
+            <p>
+              <a href ="${link.url}">${link.url}</a>
+            </p>
+        </div>
+        <div class="card-action">
+          <a href="#">Mark as read</a>
+          <a href="#">Edit</a>
+        </div>
+      </div>
+    </div>`
+    $('#link-list .row').prepend(linkHtml)
+  })
 }
 
 $(document).ready(function(){
