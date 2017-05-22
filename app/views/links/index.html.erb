@@ -9,19 +9,10 @@
       <div class="card-content">
         <span class="card-title">Add a link</span>
         <input id='url' type="text">
-        <label for="url">URL</label>
+        <label for="url">Url</label>
         <input id=title type="text">
         <label for="title">Title</label>
         <input type="submit" value="Add link" id="create-link">
-        <%#= form_for @link, url: "/users/#{current_user.id}/links" do |f| %>
-          <%#= f.label :url %>
-          <%#= f.text_field :url %>
-
-          <%#= f.label :title %>
-          <%#= f.text_field :title %>
-
-          <%#= f.submit "Add link" %>
-        <%# end %>
       </div>
       <div class="card-action">
 

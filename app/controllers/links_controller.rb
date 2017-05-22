@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     if current_user.nil?
@@ -10,6 +11,7 @@ class LinksController < ApplicationController
 
   def create
     user = current_user
+    debugger
     @link = user.links.new(link_params)
     if @link.save
       
