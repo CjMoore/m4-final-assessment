@@ -22,6 +22,22 @@ function bindLinkSubmit() {
   $('#link-form').on('click', "#create-link", (event) => addLink())
 }
 
+function loadAllLinks() {
+  $.ajax({
+    url: '/api/v1/links',
+    method: 'GET'
+  }).then( (data) => printAllLinks(data))
+  .fail( (error) => {
+    console.error(error)
+  });
+}
+
+function printAllLinks(data) {
+  
+}
+
 $(document).ready(function(){
   bindLinkSubmit()
+
+  loadAllLinks()
 });
