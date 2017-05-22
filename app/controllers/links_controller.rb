@@ -7,4 +7,8 @@ class LinksController < ApplicationController
       @link = Link.new
     end
   end
+
+  def create
+    byebug
+  end
 end

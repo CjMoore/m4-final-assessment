@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :links, only: [:index]
   resources :users, only: [:new, :create] do
-    
+    resources :links, only: [:create]
   end
 
   get '/signup', to: 'users#signup', as: 'signup'

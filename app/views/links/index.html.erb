@@ -8,14 +8,14 @@
     <div class="card" id="link-form">
       <div class="card-content">
         <span class="card-title">Add a link</span>
-        <%= form_for @link, url: '/links' do |f| %>
+        <%= form_for @link, url: "/users/#{current_user.id}/links" do |f| %>
           <%= f.label :url %>
           <%= f.text_field :url %>
 
           <%= f.label :title %>
           <%= f.text_field :title %>
 
-          <%= f.submit "Add Link" %>
+          <%= f.submit "Add link" %>
         <% end %>
       </div>
       <div class="card-action">
