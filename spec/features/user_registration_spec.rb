@@ -5,6 +5,7 @@ describe "when a guest user visits root they are redirected to sign up or login"
     visit root_path
 
     expect(current_path).to eq(signup_path)
+    save_and_open_page
 
     click_on("Register")
 
