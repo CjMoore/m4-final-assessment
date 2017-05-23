@@ -4,5 +4,4 @@ class Link < ActiveRecord::Base
 
   validates :url, url: true
   validates :url, :title, presence: true
-  validates :url, :title, uniqueness: true
 end

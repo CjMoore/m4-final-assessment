@@ -51,30 +51,23 @@ function printAllLinks(data) {
       </div>
     </div>`
 
-    // <div class="card-action">
-    //   <button class="mark-as-read" data-id="${link.id}">Mark as unread</button>
-    //   <form action="/links/${link.id}/edit" method="get">
-    //     <input type="submit" value="Edit" class="edit-link"/>
-    //   </form>
-
     $('#link-list .row').prepend(linkHtml)
 
     if (link.read == true) {
       let readOrNot = `<div class="card-action">
-        <button class="mark-as-unread" data-id="${link.id}">Mark as unread</button>
+        <button class="mark-as-unread btn cyan lighten-4" data-id="${link.id}">Mark as unread</button>
         <form action="/links/${link.id}/edit" method="get">
-          <input type="submit" value="Edit" class="edit-link"/>
+          <input type="submit" value="Edit" class="edit-link deep-orange lighten-3 btn"/>
         </form>
       </div>`
       $(`#${link.id}`).append(readOrNot)
       $(`#${link.id}`).addClass('green lighten-1')
 
-      // debugger
     } else {
       let readOrNot = `<div class="card-action">
-        <button class="mark-as-read" data-id="${link.id}">Mark as read</button>
+        <button class="mark-as-read btn purple lighten-3" data-id="${link.id}">Mark as read</button>
         <form action="/links/${link.id}/edit" method="get">
-          <input type="submit" value="Edit" class="edit-link"/>
+          <input type="submit" value="Edit" class="edit-link deep-orange lighten-3 btn"/>
         </form>
       </div>`
       $(`#${link.id}`).append(readOrNot)
@@ -82,18 +75,57 @@ function printAllLinks(data) {
   })
 }
 
-function bindChangeRead() {
-  $('.card-action').on('click', '.change-read', function(event){
-    debugger
+function filterLinks() {
+  $('#filter-links').keyup( function () {
+
+    $('.link-card').each( function(index, link) {
+      let inputVal = $('#filter-links').val().toLowerCase()
+      let cardTitle = $(link).find('.card-title').text().toLowerCase()
+      let cardUrl = $(link).find('a').text().toLowerCase()
+
+      if (cardTitle.includes(inputVal) || cardUrl.includes(inputVal)){
+        $(link).show()
+      } else {
+        $(link).hide()
+      }
+    })
   })
 }
 
+function showRead() {
+  $('#show-read').on('click', function(event) {
+    $('.link-card').each( function(index, link) {
+      let readVal = $(link).find('.read-status').text()
+      if(readVal.includes("true")) {
+        $(link).show()
+      } else {
+        $(link).hide()
+      }
+    })
+  })
+}
+
+function showUnread() {
+  $('#show-unread').on('click', function(event) {
+    $('.link-card').each( function(index, link) {
+      let readVal = $(link).find('.read-status').text()
+      if(readVal.includes("false")) {
+        $(link).show()
+      } else {
+        $(link).hide()
+      }
+    })
+  })
+}
 
 $(document).ready(function(){
   bindLinkSubmit()
 
   loadAllLinks()
 
-  bindChangeRead()
+  filterLinks()
 
+  showRead()
+
+  showUnread()
 });
