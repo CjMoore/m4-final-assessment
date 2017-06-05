@@ -64,14 +64,14 @@ function updateLinkStatus(link) {
 function updateHotReads(link) {
   $.ajax({
     method: 'POST',
-    url: 'http://localhost:3000/api/v1/links',
+    url: 'https://hot-reads-cjm.herokuapp.com/api/v1/links',
     data: link
-  }).done(printHot(data))
+  }).done(printHot)
   .fail(displayFailure);
 }
 
 function printHot(data) {
-  debugger
+  
 }
 
 function displayFailure(failureData){
