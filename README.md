@@ -1,27 +1,20 @@
-# URLockBox
+# URLockbox
+URLlockbox is an application in which a user can post and save links for later review. The user can create an account, sign in, save links, edit saved links, mark links as read or unread, and filter links by included characters or read status.
 
-## Final Assessment
+## Tech stack
+This application uses Rails 5.0.1
 
-The URLockbox is a starter app for the final assessment for module 4 of the backend engineering program at Turing School of Software and Design.
+## Setup
+* To setup this application first clone the repo
+* Run `bundle`
+* To run locally run `rails s` and open browser to localhost:3000
+* The production link is [here](https://shrouded-plateau-67325.herokuapp.com/)
 
-Be sure to get familiar with what is already done, and what is not. No features are complete, but there is some set up done for several features. Use commit history if that helps.
+## Tests
+* This application uses RSpec and Selenium to test the backend and frontend respectively.
+* To run tests use the command `rspec`
 
-### Testing your JS with Selenium
-
-The app has the `selenium-webdriver` gem listed in the `Gemfile` and setup in the `rails_helper.rb`
-
-#### Setup
-
-Everything will be installed with Bundle.
-
-You will need to download version 46 of Firefox [here](https://www.softexia.com/windows/web-browsers/firefox-46). If you do have it, make sure it is on version 46. Selenium does not work with all versions of Firefox, so make sure that you are using Firefox 46 or else it will potentially cause you problems.
-
-If you already have Firefox and it's on a version more recent than 46, the easiest way to downgrade is to uninstall Firefox then install version 46.
-
-#### Use
-
-You can then write capybara feature tests and add `js: true` tag if you'd like your test to use the Selenium WebDriver rather than the default WebDriver.  Your tests will execute and recognize your JavaScript.
-
-If you're having problems troubleshooting asynchronous actions (like DOM changes after an AJAX request), [peruse this section of Capybara's docs](https://github.com/teamcapybara/capybara#asynchronous-javascript-ajax-and-friends)
-
-It is highly suggested that you also check out the Capybara docs and and the section on [selenium-webdriver](https://github.com/teamcapybara/capybara#selenium).
+## API docs
+This application has two API endpoints.
+* POST to '/api/v1/links' allows the user to create a new link. This is used to create a link without refreshing the page
+* PATCH to '/api/v1/links/:id' allows the user to update a link without refreshing the page. 
