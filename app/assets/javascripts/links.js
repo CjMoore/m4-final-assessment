@@ -75,6 +75,40 @@ function printAllLinks(data) {
   })
 }
 
+function getHotReads() {
+  $.ajax({
+    method: 'GET',
+    url: 'https://hot-reads-cjm.herokuapp.com/api/v1/links'
+  }).then((data) => addHot(data))
+  .fail( (error) => {
+    console.error(error)
+  });
+}
+
+function addHot(data) {
+  var hot_links = getHotReadsUrls(data)
+  $('.link-card').each( function(index, link) {
+    let cardUrl = $(link).find('a').text().toLowerCase()
+    if (hot_links.includes(cardUrl)) {
+      $(link).find('.is-hot').remove()
+      $(link).find('.card-title').prepend('<h5 class="is-hot">Hot!</h5>')
+    } else {
+      $(link).find('.is-hot').remove()
+    }
+    if (hot_links[0] == cardUrl) {
+      $(link).find('.is-hot').text('Top!')
+    }
+  })
+}
+
+function getHotReadsUrls(hotLinks){
+  var urls = []
+  hotLinks.forEach( function(link) {
+    urls.push(link.url)
+  })
+  return urls
+}
+
 function filterLinks() {
   $('#filter-links').keyup( function () {
 
@@ -122,6 +156,7 @@ $(document).ready(function(){
   bindLinkSubmit()
 
   loadAllLinks()
+  getHotReads()
 
   filterLinks()
 
