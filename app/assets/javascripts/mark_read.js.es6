@@ -43,7 +43,7 @@ function updateLinkStatus(link) {
     </div>`
 
     $(`#${link.id}`).append(changeToRead)
-
+    updateHotReads(link)
   } else {
 
     $(`#${link.id} .read-status`).text("Read: false")
@@ -59,6 +59,19 @@ function updateLinkStatus(link) {
 
     $(`#${link.id}`).append(changeToUnread)
   }
+}
+
+function updateHotReads(link) {
+  $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/api/v1/links',
+    data: link
+  }).done(printHot(data))
+  .fail(displayFailure);
+}
+
+function printHot(data) {
+  debugger
 }
 
 function displayFailure(failureData){
