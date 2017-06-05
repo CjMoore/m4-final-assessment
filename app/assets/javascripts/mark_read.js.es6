@@ -43,6 +43,7 @@ function updateLinkStatus(link) {
     </div>`
 
     $(`#${link.id}`).append(changeToRead)
+    sendToHotReads(link)
 
   } else {
 
@@ -59,6 +60,21 @@ function updateLinkStatus(link) {
 
     $(`#${link.id}`).append(changeToUnread)
   }
+}
+
+function sendToHotReads(link) {
+  debugger
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:3000/api/v1/links",
+    data: link
+  }).done(updateHotRead(data))
+  .fail(displayFailure);
+}
+
+// https://hot-reads-cjm.herokuapp.com/api/v1/links
+function updateHotRead(data){
+  debugger
 }
 
 function displayFailure(failureData){
