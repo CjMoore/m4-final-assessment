@@ -31,7 +31,7 @@ function loadAllLinks() {
   $.ajax({
     url: '/api/v1/links',
     method: 'GET'
-  }).then( (data) => printAllLinks(data))
+  }).then( (data) => printAllLinks(data, getHotReads()))
   .fail( (error) => {
     console.error(error)
   });
@@ -156,7 +156,8 @@ $(document).ready(function(){
   bindLinkSubmit()
 
   loadAllLinks()
-  getHotReads()
+
+  // getHotReads()
 
   filterLinks()
 
