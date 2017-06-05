@@ -15,6 +15,11 @@ class Api::V1::LinksController < ApplicationController
     render json: @links
   end
 
+  def recent_links
+    @links = Link.get_recent_read
+    render json: @links
+  end
+
   private
 
   def link_params
