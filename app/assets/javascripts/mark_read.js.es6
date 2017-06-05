@@ -72,7 +72,6 @@ function updateHotReads(link) {
 
 function printHot(data) {
   var hot_links = getLinks(data)
-  debugger
   $('.link-card').each( function(index, link) {
     let cardUrl = $(link).find('a').text().toLowerCase()
     if (hot_links.includes(cardUrl)) {
