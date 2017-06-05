@@ -76,6 +76,7 @@ function printHot(data) {
   $('.link-card').each( function(index, link) {
     let cardUrl = $(link).find('a').text().toLowerCase()
     if (hot_links.includes(cardUrl)) {
+      $(link).find('.is-hot').remove()
       $(link).find('.card-title').prepend('<h5 class="is-hot">Hot!</h5>')
     } else {
       $(link).find('.is-hot').remove()
