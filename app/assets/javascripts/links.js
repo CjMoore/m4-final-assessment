@@ -78,7 +78,7 @@ function printAllLinks(data) {
 function getHotReads() {
   $.ajax({
     method: 'GET',
-    url: 'https://hot-reads-cjm.herokuapp.com/api/v1/links'
+    url: 'http://localhost:3000/api/v1/links'
   }).then((data) => addHot(data))
   .fail( (error) => {
     console.error(error)
@@ -156,8 +156,6 @@ $(document).ready(function(){
   bindLinkSubmit()
 
   loadAllLinks()
-
-  // getHotReads()
 
   filterLinks()
 
