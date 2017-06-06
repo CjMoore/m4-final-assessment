@@ -157,8 +157,6 @@ $(document).ready(function(){
 
   loadAllLinks()
 
-  // getHotReads()
-
   filterLinks()
 
   showRead()

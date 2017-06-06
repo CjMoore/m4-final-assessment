@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "when a user clicks on read", js: true do
-  xit "if that link is a hot read the card says hot" do
+  it "if that link is a hot read the card says hot" do
     user = User.create(email: 'email@email.com', password: 'pass')
     link = user.links.create(url: 'http://bb.com', title: 'bb')
 
